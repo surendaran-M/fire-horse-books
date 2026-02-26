@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="FireHorse Books - Buy your favorite books online" />
+    <meta name="theme-color" content="#007bff" />
+    <base href="/FH_book/" />
+    <link rel="icon" href="favicon.ico" />
+    <title>FireHorse Books</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      
+      body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        min-height: 100vh;
+      }
+      
+      #intro-page {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+        padding: 20px;
+        text-align: center;
+        color: white;
+        opacity: 1;
+      }
+      
+      #intro-page h1 {
+        font-size: 3rem;
+        margin-bottom: 1rem;
+        text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+      }
+      
+      #intro-page p {
+        font-size: 1.2rem;
+        margin-bottom: 2rem;
+        max-width: 600px;
+        color: #f0f0f0;
+      }
+      
+      #intro-page .enter-btn {
+        display: inline-block;
+        padding: 15px 40px;
+        background: white;
+        color: #667eea;
+        text-decoration: none;
+        border-radius: 50px;
+        font-weight: bold;
+        font-size: 1.1rem;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+      }
+      
+      #intro-page .enter-btn:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+      }
+      
+      #root {
+        display: none;
+      }
+      
+      #root.active {
+        display: block;
+      }
+      
+      .loading {
+        font-size: 1.2rem;
+        color: #f0f0f0;
+        margin-top: 2rem;
+      }
+    </style>
+    <script type="module" crossorigin src="/fire-horse-books/assets/index-DqcsaXHi.js"></script>
+    <link rel="stylesheet" crossorigin href="/fire-horse-books/assets/index-DE64shO5.css">
+  </head>
+  <body>
+    <noscript>Please enable JavaScript to run this app.</noscript>
+    
+    <!-- Introduction Page -->
+    <div id="intro-page">
+      <h1>Welcome to FireHorse Books</h1>
+      <p>Your premier destination for buying and discovering amazing books. Browse our collection, find your next favorite read, and enjoy a seamless shopping experience.</p>
+      <a href="#" class="enter-btn" onclick="enterApp(); return false;" aria-label="Enter FireHorse Books">Enter App</a>
+      <p class="loading" id="loading-text" style="display: none;">Loading...</p>
+    </div>
+    
+    <div id="root"></div>
+    <script>
+      function enterApp() {
+        const introPage = document.getElementById('intro-page');
+        const loadingText = document.getElementById('loading-text');
+
+        // Ensure transition is applied before changing opacity so the fade runs
+        introPage.style.transition = 'opacity 0.5s ease';
+        introPage.style.opacity = '0';
+        loadingText.style.display = 'block';
+
+        setTimeout(function() {
+          introPage.style.display = 'none';
+          // Navigate to the app base (respects the <base> href)
+          const base = document.querySelector('base')?.getAttribute('href') || '/';
+          window.location.href = base;
+        }, 500);
+      }
+    </script>
+  </body>
+</html>
