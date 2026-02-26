@@ -70,13 +70,7 @@ function Signup() {
     
     setLoading(true);
     setError("");
-    
-    console.log("Signup attempt with:", { 
-      ...formData, 
-      password: "***", 
-      confirmPassword: "***" 
-    });
-    
+
     try {
       const userData = await signup({
         name: formData.name,
@@ -84,10 +78,8 @@ function Signup() {
         password: formData.password,
         role: formData.role
       });
-      
-      console.log("Signup successful, user data:", userData);
-      
-      if (!userData()) {
+
+      if (!userData) {
         throw new Error("No user data returned from signup");
       }
       
@@ -106,7 +98,6 @@ function Signup() {
       }, 2000);
       
     } catch (err) {
-      console.error("Signup error:", err);
       setError(err.message || "Signup failed. Please try again.");
     } finally {
       setLoading(false);

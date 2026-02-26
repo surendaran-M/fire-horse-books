@@ -1,26 +1,23 @@
-import { createContext, useState, useContext, useEffect } from "react";
+import { createContext, useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 
 const AuthContext = createContext({});
 
 export const AuthProvider = ({ children }) => {
-  const [user, setUser] = useState(null);
-  const [loading, setLoading] = useState(true);
-  const navigate = useNavigate();
-
-  useEffect(() => {
-    // Check if user is stored in localStorage
+  const [user, setUser] = useState(() => {
     const storedUser = localStorage.getItem("user");
-    if (storedUser) {
-      try {
-        setUser(JSON.parse(storedUser));
-      } catch (error) {
-        console.error("Error parsing user data:", error);
-        localStorage.removeItem("user");
-      }
+    if (!storedUser) return null;
+
+    try {
+      return JSON.parse(storedUser);
+    } catch (error) {
+      console.error("Error parsing user data:", error);
+      localStorage.removeItem("user");
+      return null;
     }
-    setLoading(false);
-  }, []);
+  });
+  const loading = false;
+  const navigate = useNavigate();
 
   const login = (userData) => {
     localStorage.setItem("user", JSON.stringify(userData));
