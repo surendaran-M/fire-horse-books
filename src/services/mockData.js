@@ -52,9 +52,9 @@ export const mockBooks = [
 ];
 
 export const mockUsers = [
-  { id: 1, name: "Buyer User", email: "buyer@example.com", password: "123", role: "buyer" },
-  { id: 2, name: "Seller User", email: "seller@example.com", password: "123", role: "seller" },
-  { id: 3, name: "John Doe", email: "dark@gmail.com", password: "darkruler", role: "buyer" },
-  { id: 4, name: "John", email: "darkking@gmail.com", password: "darkruler", role: "buyer" },
+  // Demo credentials (safe to keep in a public repo)
+  { id: 1, name: "Buyer User", email: "buyer@example.com", password: "password123", role: "buyer" },
+  { id: 2, name: "Seller User", email: "seller@example.com", password: "password123", role: "seller" },
+  { id: 3, name: "John", email: "john@example.com", password: "password123", role: "buyer" },
 
 ];
